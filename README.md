@@ -20,3 +20,10 @@ Timestamps
 - It is noted that the Ethereum block time is roughly 15 seconds
     - Meaning that a new block is created and added to the blockchain
 - Based on the blocktime we can calculate when the auction starts and ends
+
+Withdrawal Pattern
+- We do not proactively send back the funds to users that did not win the auction. We will use the "withdrawal pattern" instead.
+- We should only send ETH to a user when he explicitly requests it
+- This is the "withdrawal" pattern and this enables the contract from avoiding re-entrace attacks that could induce unexpected behaviours, including financial loss for users.
+
+ 
