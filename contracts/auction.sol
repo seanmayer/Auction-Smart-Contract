@@ -24,7 +24,7 @@ contract Auction {
         startBlock = block.number;
         endBlock = startBlock + 40320; //604800 (seconds in a week) / 15 (eth block creation time) = 40320 (blocks created in a week)
         ipfsHash = "";
-        bidIncrement = 100;
+        bidIncrement = 1000000000000000000;
     }
     
     modifier notOwner() {
@@ -78,7 +78,35 @@ contract Auction {
             highestBidder = payable(msg.sender);
         }
         
+    }
+    
+    function finaliseAuction() public { 
+        require (auctionState == State.Canceled || block.number > endBlock);
+        require (msg.sender == owner || bids[msg.sender] > 0);
         
+        address payable recipient;
+        uint value;
+        
+        if(auctionState == State.Canceled) {
+            recipient = payable(msg.sender);
+            value = bids[msg.sender];
+        } else { //auction ended not canceled
+            if(msg.sender == owner) {
+                recipient = owner;
+                value = highestBindingBid;
+            } else { //bidder
+                if(msg.sender == highestBidder) {
+                    recipient = highestBidder;
+                    value = bids[highestBidder] - highestBindingBid;
+                } else { //neither owner or highestBidder
+                    recipient = payable(msg.sender);
+                    value = bids[msg.sender];
+                }
+            }
+        }
+        //resetting the value to 0 for the bidder, so it cant cancel and request funds multiple times
+        bids[recipient] = 0;
+        recipient.transfer(value);
     }
     
     
