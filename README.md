@@ -1,4 +1,4 @@
-#Auction Smart Contract
+Auction Smart Contract
 
 Smart Contract for Decentralised Auction, similar to Ebay
 
