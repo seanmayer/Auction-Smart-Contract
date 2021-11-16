@@ -22,7 +22,7 @@ contract Auction {
         owner = payable(msg.sender);
         auctionState = State.Running;
         startBlock = block.number;
-        endBlock = startBlock + 40320; //604800 (seconds in a week) / 15 (eth block creation time) = 40320 (blocks created in a week)
+        endBlock = startBlock + 3; //startBlock + 40320; //604800 (seconds in a week) / 15 (eth block creation time) = 40320 (blocks created in a week)
         ipfsHash = "";
         bidIncrement = 1000000000000000000;
     }

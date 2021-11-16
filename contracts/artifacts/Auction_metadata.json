@@ -64,6 +64,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "finaliseAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "highestBidder",
 				"outputs": [
 					{
@@ -163,11 +170,11 @@
 	},
 	"sources": {
 		"contracts/auction.sol": {
-			"keccak256": "0x3257cff50c103cc7338a1b9de107618ac4c153a8b8263f394bb317f2cce77b04",
+			"keccak256": "0xd5d3e9c1756ca184bdc13ac6f9c71651fd22abda480b2a2d754744457df04223",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://eb595dff3681aa5954bca872f26f2906f67cb57ff7da61d98bf558bc22602a0c",
-				"dweb:/ipfs/QmVnvYiCYr9phMfHTjc4EenfFf9gB8omtcn2La9sg2VRAL"
+				"bzz-raw://266589190fe217ed16942e534669946d9d8484dad58bed78d8e92d61849aa076",
+				"dweb:/ipfs/QmTRW45WDE5nTLxyo3NA4i67V4jyWUMh4xMuyyjWtS8VmB"
 			]
 		}
 	},
