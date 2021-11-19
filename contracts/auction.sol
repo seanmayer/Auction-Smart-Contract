@@ -2,6 +2,16 @@
 
 pragma solidity >=0.5 <0.9.0;
 
+contract AuctionCreator {
+    Auction[] public auctions;
+    
+    function createAuction() public {
+        Auction newAuction = new Auction(msg.sender);
+        auctions.push(newAuction);
+        
+    }
+}
+
 contract Auction {
     
     address payable public owner;
@@ -18,8 +28,8 @@ contract Auction {
     mapping(address => uint) public bids;
     uint bidIncrement;
     
-    constructor() {
-        owner = payable(msg.sender);
+    constructor(address eoa) {
+        owner = payable(eoa);
         auctionState = State.Running;
         startBlock = block.number;
         endBlock = startBlock + 3; //startBlock + 40320; //604800 (seconds in a week) / 15 (eth block creation time) = 40320 (blocks created in a week)
